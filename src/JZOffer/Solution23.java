@@ -42,7 +42,7 @@ public class Solution23 {
 
     public ListNode reverseList(ListNode head) {
 
-        if (head == null){
+        if (head == null) {
             return null;
         }
 
@@ -55,12 +55,11 @@ public class Solution23 {
         }
 
         ListNode newHead = stack.pop();
-        ListNode cur = newHead;
+        ListNode preNode = newHead;
         while (!stack.isEmpty()) {
-            ListNode listNode = stack.pop();
-            listNode.next = null;
-            cur.next = listNode;
-            cur = cur.next;
+            ListNode curNode = stack.pop();
+            preNode.next = curNode;
+            preNode = curNode;
         }
         return newHead;
     }
