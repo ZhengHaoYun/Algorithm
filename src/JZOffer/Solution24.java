@@ -1,6 +1,5 @@
 package JZOffer;
 
-import java.util.List;
 import java.util.Stack;
 
 /*
@@ -19,7 +18,7 @@ import java.util.Stack;
 
 0 <= 节点个数 <= 5000
  */
-public class Solution23 {
+public class Solution24 {
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
@@ -30,8 +29,8 @@ public class Solution23 {
         node2.next = node3;
         node3.next = node4;
 
-        Solution23 solution23 = new Solution23();
-        ListNode node = solution23.reverseList(node1);
+        Solution24 solution23 = new Solution24();
+        ListNode node = solution23.reverseList2(node1);
 
         while (node != null) {
             System.out.println(node.val);
@@ -40,6 +39,7 @@ public class Solution23 {
     }
 
 
+    // 采用栈的方式
     public ListNode reverseList(ListNode head) {
 
         if (head == null) {
@@ -63,6 +63,26 @@ public class Solution23 {
         }
         return newHead;
     }
+
+
+    // 双指针法
+    public ListNode reverseList2(ListNode head) {
+        if (head == null)
+            return null;
+
+        ListNode pre = head;
+        ListNode cur = head.next;
+        pre.next = null;
+        while (cur != null) {
+            ListNode node = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = node;
+        }
+
+        return pre;
+    }
+
 
     static class ListNode {
         int val;
